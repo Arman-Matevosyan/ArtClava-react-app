@@ -1,3 +1,5 @@
+# Boilerplate
+Place to try new libs and code styles
 # Project Setup
 > `npm install`
 # Project run
