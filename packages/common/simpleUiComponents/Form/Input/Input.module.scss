@@ -1,0 +1,112 @@
+@import 'common/assets/core';
+
+.inputParent {
+  position: relative;
+  + .inputParent,
+  + .columnStyles {
+    margin: rem(30) 0 0;
+  }
+  > input,
+  > textarea {
+    &:focus {
+      ~ i {
+        color: c(dark, 0.5);
+      }
+      border: rem(2) solid c(dark, 0.16);
+    }
+  }
+  > input,
+  > textarea,
+  > select {
+    height: rem(44);
+    border: rem(2) solid c(dark, 0.1);
+    width: 100%;
+    padding: rem(12) rem(15);
+    font-size: rem(14);
+    font-family: v(font), sans-serif;
+    transition: border-color 300ms;
+    &::placeholder {
+      color: c(dark, 0.3);
+    }
+    &:disabled {
+      pointer-events: none;
+      color: c(dark, 0.5);
+    }
+    &:read-only {
+      color: c(dark, 0.5);
+    }
+  }
+  > textarea {
+    min-height: rem(200);
+    resize: vertical;
+  }
+}
+.label {
+  font-size: rem(15);
+  font-weight: 600;
+  line-height: rem(21);
+  margin: 0 0 rem(10);
+  text-transform: uppercase;
+  display: block;
+}
+.error {
+  border-color: c(danger) !important;
+}
+.errorMessage {
+  color: c(danger);
+  font-size: rem(14);
+  margin: rem(5) 0 0;
+}
+.withIcon {
+  > input,
+  > select {
+    padding: rem(12) rem(15) rem(12) rem(41);
+  }
+  > i {
+    pointer-events: none;
+    font-size: rem(20);
+    position: absolute;
+    bottom: 0;
+    height: rem(44);
+    width: rem(44);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: c(dark, 0.3);
+    transition: color 300ms;
+  }
+}
+.rightIcon {
+  > i {
+    right: 0;
+  }
+  > input,
+  > select {
+    padding: rem(12) rem(41) rem(12) rem(15);
+  }
+}
+.leftIcon {
+  > i {
+    left: 0;
+  }
+  > input {
+    padding: rem(12) rem(15) rem(12) rem(41);
+  }
+}
+.columnStyles {
+  display: grid;
+  width: 100%;
+  grid-auto-flow: column;
+  gap: rem(30);
+  grid-auto-columns: 1fr;
+  .inputParent {
+    margin: 0;
+  }
+  + .columnStyles,
+  + .inputParent {
+    margin: rem(30) 0 0;
+  }
+  + .radioParent {
+    margin: rem(10) 0 0;
+  }
+}

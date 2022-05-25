@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ES2021",
+      "jsx": "react",
+      "module": "commonJS",
+      "esModuleInterop": true,
+      "experimentalDecorators": true,
+      "noEmit": true,
+      "resolveJsonModule": true,
+      "baseUrl": "./packages"
+  },
+    "exclude": ["node_modules", "**/node_modules/*"]
+}

@@ -1,0 +1,80 @@
+{
+  "name": "artclava",
+  "version": "1.0.0",
+  "description": "TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "webpack serve --mode development --env=development --port 3001",
+    "lint": "eslint --cache \"packages/**/*.{js,jsx,ts,tsx}\"",
+    "lint:fix": "eslint --cache --fix \"packages/**/*.{js,jsx}\"",
+    "execute:lint": "eslint --ext .jsx .",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "AtronixLLC@vs-ssh.visualstudio.com:v3/AtronixLLC/Artica/Artica.WebApp"
+  },
+  "author": "Arman Matevosyan",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/preset-env": "^7.13.10",
+    "@babel/preset-react": "^7.12.13",
+    "axios": "^0.25.0",
+    "axios-case-converter": "^0.9.0",
+    "babel-loader": "^8.2.2",
+    "classnames": "^2.3.1",
+    "file-loader": "^6.2.0",
+    "history": "^5.0.0",
+    "html-webpack-plugin": "^5.3.0",
+    "i18next-http-backend": "^1.3.2",
+    "i18next-icu": "^2.0.3",
+    "prop-types": "^15.8.1",
+    "qs": "^6.10.3",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-hot-loader": "^4.13.0",
+    "react-i18next": "^11.15.3",
+    "react-query": "^3.34.12",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "sass": "^1.49.0",
+    "styled-components": "^5.3.3",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.12",
+    "@babel/eslint-parser": "^7.16.5",
+    "@babel/plugin-transform-runtime": "^7.16.5",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^5.2.7",
+    "eslint": "^8.7.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-flowtype": "^2.34.1",
+    "eslint-plugin-header": "^3.1.1",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-lodash": "^7.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "husky": "^4.3.8",
+    "jest": "^26.6.3",
+    "jscrambler-webpack-plugin": "^6.0.2",
+    "lint-staged": "^12.2.2",
+    "mini-css-extract-plugin": "^2.5.3",
+    "sass-loader": "^12.0.0",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.5.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "npm run lint:fix"
+  }
+}

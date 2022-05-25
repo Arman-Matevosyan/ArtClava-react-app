@@ -1,0 +1,36 @@
+@import 'common/assets/core';
+
+.selectStyles {
+  > select {
+    cursor: pointer;
+  }
+  > i {
+    pointer-events: none;
+    position: absolute;
+    bottom: 0;
+    height: rem(44);
+    width: rem(44);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: c(dark, 0.3);
+    transition: color 300ms;
+    &:global {
+      &.arrow {
+        font-size: rem(16);
+        right: 0;
+      }
+    }
+  }
+}
+.withIcon {
+  > select {
+    padding: rem(12) rem(41) rem(12);
+  }
+  :global {
+    .customIcon {
+      font-size: rem(20);
+      left: 0;
+    }
+  }
+}

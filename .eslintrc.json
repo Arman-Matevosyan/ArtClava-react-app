@@ -1,0 +1,103 @@
+{
+  "parser": "@babel/eslint-parser",
+  "env": {
+      "browser": true,
+      "commonjs": true,
+      "es6": true,
+      "node": true
+  },
+  "parserOptions": {
+      "ecmaFeatures": {
+          "jsx": true
+      },
+      "sourceType": "module"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    // React
+    "react/forbid-prop-types": "error",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/no-set-state": "error",
+    "react/no-string-refs": "error",
+    "react/prefer-es6-class": "error",
+    "react/prefer-stateless-function": "error",
+    "react/require-render-return": "error",
+    "react/self-closing-comp": "error",
+    "react/sort-comp": "error",
+    "react/no-multi-comp": [2, { "ignoreStateless": true }],
+    // JSX
+    "react/jsx-boolean-value": "error",
+    "react/jsx-closing-bracket-location": "error",
+    "react/jsx-curly-spacing": [ "error", "always" ],
+    "react/jsx-equals-spacing": "error",
+    "react/jsx-first-prop-new-line": "error",
+    "react/jsx-handler-names": "error",
+    "react/jsx-indent-props": [ "error", 2 ],
+    "react/jsx-indent": [ "error", 2 ],
+    "react/jsx-key": "error",
+    "react/jsx-max-props-per-line": [ "error", { "maximum": 3 }],
+    "react/jsx-no-bind": "error",
+    "react/jsx-no-literals": "off",
+    "react/jsx-no-target-blank": "error",
+    "react/jsx-pascal-case": "error",
+    "react/jsx-sort-props": "error",
+    "react/display-name": [0],
+    "react/jsx-tag-spacing": ["error", { "beforeSelfClosing": "always" }],
+      "react/prop-types": 1,
+      "comma-dangle": [
+          "warn",
+          "never"
+      ],
+      "quotes": [
+          "warn",
+          "single"
+      ],
+      "semi": [
+          "warn",
+          "always"
+      ],
+      "header/header": [2, "copyright.js"],
+      "no-restricted-imports": [
+        "error"
+      ],
+      "react/jsx-filename-extension": [
+        2,
+        { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+      ],
+      "import/no-extraneous-dependencies": [
+        "off",
+        {
+          "devDependencies": true,
+          "optionalDependencies": false,
+          "peerDependencies": false
+        }
+      ],
+      "react/jsx-curly-brace-presence": "warn",
+      "react/jsx-one-expression-per-line": 0,
+      "import/extensions": [0],
+      "import/prefer-default-export": 0,
+      "jsx-a11y/anchor-is-valid": 0,
+      "newline-after-var": 2,
+      "newline-before-return": 2,
+      "no-use-before-define": "off",
+      "react/require-default-props": "off"
+  },
+  "plugins": [
+      "react",
+      "header",
+      "import"
+  ],
+  "overrides": [
+    {
+      "files": ["*.jsx", "*.js"]
+    }
+  ],
+  "extends": [
+      "plugin:react/recommended"
+  ]
+}

@@ -1,0 +1,165 @@
+@use 'sass:math';
+
+$primary: #749cec;
+$primary-active: darken($primary, 5%);
+
+$colors: (
+  'primary': $primary,
+  'primary-active': $primary-active,
+  'primary-sc': #ffffff,
+  'danger': #c0392b,
+  'success': #27ae60,
+  'warning': #f1c40f,
+  'text': #222222,
+  'dark': #000000,
+  'light': #ffffff,
+  'gray': #eeeeee,
+  'lightgray': #f0f0f0,
+);
+
+@mixin retina {
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
+    @content;
+  }
+}
+@mixin not-retina {
+  @media (-webkit-max-device-pixel-ratio: 1) and (max-resolution: 191dpi) {
+    @content;
+  }
+}
+@function v($variable) {
+  @return var(--#{$variable});
+}
+@function c($color, $opacity: 1) {
+  @if $opacity == 1 {
+    @return var(--#{$color});
+  }
+  @return rgba(var(--#{$color}-rgb), $opacity);
+}
+@function sc($color, $opacity: 1) {
+  @if $opacity == 1 {
+    @return var(--#{$color}-sc);
+  }
+  @return rgba(var(--#{$color}-sc-rgb), $opacity);
+}
+@mixin placeholder {
+  $prefixList: '::-webkit-input', ':-moz', '::-moz', ':-ms-input';
+  @each $prefix in $prefixList {
+    &#{$prefix}-placeholder {
+      @content;
+      opacity: 1;
+    }
+  }
+}
+@function rem($size) {
+  $remSize: math.div($size, 10);
+  @if $size == 1 {
+    @return #{$size}px;
+  }
+  @return #{$remSize}rem;
+}
+@function -rem($size) {
+  $remSize: math.div($size, 10);
+  @if $size == 1 {
+    @return -#{$size}px;
+  }
+  @return -#{$remSize}rem;
+}
+@each $name, $color in $colors {
+  $colors: map-merge($colors, (#{$name + '-rgb'}: #{red($color), green($color), blue($color)}));
+}
+@mixin scroll-y($scroll: auto) {
+  $border-radius: 10px;
+  $width: 4px;
+  $scroll-main-color: rgba(var(--dark-rgb), 0.2);
+  $scroll-main-thumb-color: rgba(var(--dark-rgb), 0.5);
+
+  overflow-y: $scroll;
+  overflow-x: hidden;
+  scrollbar-track-color: $scroll-main-color;
+  scrollbar-shadow-color: $scroll-main-color;
+  scrollbar-base-color: $scroll-main-thumb-color;
+  scrollbar-arrow-color: $scroll-main-thumb-color;
+  &::-webkit-scrollbar {
+    width: $width;
+    background: $scroll-main-color;
+    border-radius: $border-radius;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: $border-radius;
+    background: $scroll-main-thumb-color;
+  }
+}
+@mixin scroll-x($scroll: auto) {
+  $border-radius: 10px;
+  $height: 5px;
+  $scroll-main-color: rgba(var(--dark-rgb), 0.2);
+  $scroll-main-thumb-color: rgba(var(--dark-rgb), 0.5);
+  overflow-y: hidden;
+  overflow-x: $scroll;
+  scrollbar-track-color: $scroll-main-color;
+  scrollbar-shadow-color: $scroll-main-color;
+  scrollbar-base-color: $scroll-main-thumb-color;
+  scrollbar-arrow-color: $scroll-main-thumb-color;
+  &::-webkit-scrollbar {
+    height: $height;
+    background: $scroll-main-color;
+    border-radius: $border-radius;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: $border-radius;
+    background: $scroll-main-thumb-color;
+  }
+}
+@mixin not-desktop {
+  @media screen and (max-width: 850px) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media screen and (max-width: 680px) {
+    @content;
+  }
+}
+@mixin small-mobile {
+  @media screen and (max-width: 350px) {
+    @content;
+  }
+}
+@mixin vertical {
+  @media screen and (max-height: 400px) {
+    @content;
+  }
+}
+@mixin not-tablet {
+  @media screen and (min-width: 850px) {
+    @content;
+  }
+}
+@mixin only-tablet {
+  @media screen and (min-width: 681px) and (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media screen and (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin only-desktop {
+  @media screen and (min-width: 1025px) {
+    @content;
+  }
+}
+@mixin hover {
+  @media screen and (max-width: 1024px) {
+    &:active {
+      @content;
+    }
+  }
+  @media screen and (min-width: 1025px) {
+    &:hover {
+      @content;
+    }
+  }
+}

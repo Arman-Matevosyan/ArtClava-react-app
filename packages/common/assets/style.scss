@@ -1,0 +1,42 @@
+@import 'core';
+@import 'reset';
+@import 'icons/style.css';
+
+:root {
+  --font: 'Poppins';
+  @each $name, $color in $colors {
+    --#{$name}: #{$color};
+  }
+  --maxWidth: #{rem(1440)};
+}
+html {
+  font: 10px / 1.3 var(--font), sans-serif;
+  @include tablet {
+    font-size: 8.5px;
+  }
+}
+body {
+  font-size: rem(16);
+  text-rendering: optimizeLegibility;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  color: c(text);
+
+  background: c(light);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-y: auto;
+  padding: 0 env(safe-area-inset-right) 0 env(safe-area-inset-left);
+}
+#root {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto 1fr auto;
+}
+main {
+  padding: 0 rem(30);
+  max-width: v(maxWidth);
+  margin: 0 auto;
+  width: 100%;
+}

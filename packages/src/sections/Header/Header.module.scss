@@ -1,0 +1,28 @@
+@import 'common/assets/core';
+
+.parent {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: c(light);
+  border-bottom: rem(1) solid c(gray);
+  padding: 0 rem(60);
+  @include tablet {
+    padding: rem(0) rem(22);
+  }
+}
+.content {
+  max-width: v(maxWidth);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  height: rem(100);
+  justify-content: space-between;
+}
+.logo {
+  width: rem(43);
+  height: rem(43);
+  border-radius: rem(12);
+  background: c(primary);
+  color: transparent;
+}

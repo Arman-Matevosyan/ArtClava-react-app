@@ -1,0 +1,17 @@
+@import 'common/assets/core';
+
+.parent {
+  border-top: 1px solid c(dark, 0.1);
+  min-height: rem(100);
+  margin: rem(30) 0 0;
+}
+.content {
+  max-width: v(maxWidth);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  padding: rem(36) rem(60);
+  @include tablet {
+    padding: rem(36) rem(22);
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "i18n-ally.defaultNamespace": "app",
+  "i18n-ally.displayLanguage": "en-US",
+  "i18n-ally.enabledFrameworks": [
+    "react",
+    "i18next"
+  ],
+  "i18n-ally.extract.keyPrefix": "{fileName}",
+  "i18n-ally.includeSubfolders": true,
+  "i18n-ally.keepFulfilled": true,
+  "i18n-ally.keystyle": "flat",
+  "i18n-ally.localesPaths": [
+    "public/locales"
+  ],
+  "i18n-ally.namespace": true,
+  "i18n-ally.pathMatcher": "{locale}/{namespace}.json",
+  "i18n-ally.sourceLanguage": "en-US",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "**/coverage": true,
+    "**/dist": true,
+    "**/.yalc": true
+  },
+  "jest.autoRun": "off",
+  "editor.tabSize": 4,
+  "editor.formatOnSave": true,
+  "editor.bracketPairColorization.enabled": true,
+}

@@ -1,0 +1,68 @@
+@import 'common/assets/core';
+
+.buttonBlock {
+  display: flex;
+  width: 100%;
+  margin: rem(30) 0 0;
+}
+.centerPosition {
+  justify-content: center;
+}
+.leftPosition {
+  justify-content: flex-start;
+}
+.rightPosition {
+  justify-content: flex-end;
+}
+.loading {
+  > button {
+    max-width: 80px !important;
+    text-overflow: initial !important;
+    color: transparent !important;
+  }
+}
+.loader {
+  font-size: rem(24);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: sc(primary);
+  animation: rotate 1s infinite linear;
+  line-height: 1;
+}
+.buttonParent {
+  position: relative;
+  > button {
+    font-size: rem(15);
+    font-family: v(font), serif;
+    padding: rem(20) rem(48);
+    background: c(primary);
+    border-radius: rem(32);
+    color: sc(primary);
+    max-width: 100vh;
+    transition: max-width 400ms, background 300ms, color 200ms;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    &:not(:disabled) {
+      cursor: pointer;
+      @include hover {
+        background: c(primary-active);
+      }
+    }
+  }
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.6;
+    cursor: default;
+  }
+}
+@keyframes rotate {
+  to {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  from {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
