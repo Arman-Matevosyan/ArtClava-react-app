@@ -1,5 +1,3 @@
-# Boilerplate
-Place to try new libs and code styles
 # Project Setup
 > `npm install`
 # Project run
@@ -12,6 +10,9 @@ Place to try new libs and code styles
 # Project Build
 > `npm build` /
 > `npm run build`
+# Boilerplate
+> `Place to try new libs and code styles, the project name is `ArtClava` `
+> `All the product based text are based on that name`
 # What is in project
 - Webpack Setup
 - Tests with jest and React testing library
