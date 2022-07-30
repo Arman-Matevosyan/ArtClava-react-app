@@ -23,7 +23,6 @@
 ![Eslint with Prettier](https://res.cloudinary.com/practicaldev/image/fetch/s--fvn_NHPr--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/f7tb15oeuzv2qu8du4sl.png)
 - [Eslint](https://eslint.org/) config fully
 - [Prettier](https://prettier.io/) Config fully
-- Ts config file
 - Absolute imports with TS config
 - babelrc folder
 - gitignore with node_modules coverages and lock ingores
