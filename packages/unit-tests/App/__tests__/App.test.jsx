@@ -11,7 +11,7 @@ import ReactDOM from 'react-dom';
 import App from 'src/appp';
 
 test('Renders correctly', () => {
-  const root  = document.createElement('div');
+  const root = document.createElement('div');
 
   ReactDOM.render(<App />, root);
   expect(root.querySelector('p').textContent).toBe('TEXT');

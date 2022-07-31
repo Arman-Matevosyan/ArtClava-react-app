@@ -25,12 +25,12 @@ const ErrorBoundary = ({ children, fallbackComponent }) => {
     return children;
   }
 
-  return <ErrorBoundary FallbackComponent={ fallback }>{children}</ErrorBoundary>;
+  return <ErrorBoundary FallbackComponent={fallback}>{children}</ErrorBoundary>;
 };
 
 ErrorBoundary.propTypes = {
   children: PropTypes.node,
-  fallbackComponent: PropTypes.node
+  fallbackComponent: PropTypes.node,
 };
 
 export default ErrorBoundary;

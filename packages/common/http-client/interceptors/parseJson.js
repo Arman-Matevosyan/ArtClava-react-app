@@ -7,8 +7,6 @@
  * is strictly prohibited.
  */
 
-import { AxiosRequestConfig } from 'axios';
-
 async function parseJSON(config) {
   if (!config || !config.data || typeof config.data !== 'string') {
     return config;

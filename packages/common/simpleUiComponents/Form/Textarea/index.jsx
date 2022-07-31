@@ -7,41 +7,54 @@
  * is strictly prohibited.
  */
 import React, { useCallback } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
-
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import styles from '../Input/Input.module.scss';
 
-const Textarea = ({ name, value, label, error, onBlur, onChange, disabled, className, placeholder, ...rest }) => {
+const Textarea = ({
+  name,
+  value,
+  label,
+  error,
+  onBlur,
+  onChange,
+  disabled,
+  className,
+  placeholder,
+  ...rest
+}) => {
   const { t } = useTranslation();
 
   const handleChange = useCallback((e) => {
-    const value = e.target.value;
+    const { value } = e.target;
 
     onChange(value, name, e);
   }, []);
 
   return (
-    <div className={ styles.inputParent }>
+    <div className={styles.inputParent}>
       {label && (
-        <label className={ classNames('ellipsis-text', styles.label) } htmlFor={ name }>
+        <label
+          className={classNames('ellipsis-text', styles.label)}
+          htmlFor={name}
+        >
           {t(label)}
         </label>
       )}
       <textarea
         autoComplete="nope"
-        className={ classNames({ [styles.error]: error }) }
-        disabled={ disabled }
-        id={ name }
-        name={ name }
-        onBlur={ onBlur }
-        onChange={ handleChange }
-        placeholder={ placeholder }
-        value={ value }
-        { ...rest }
+        className={classNames({ [styles.error]: error })}
+        disabled={disabled}
+        id={name}
+        name={name}
+        placeholder={placeholder}
+        value={value}
+        onBlur={onBlur}
+        onChange={handleChange}
+        {...rest}
       />
-      {error && <p className={ styles.errorMessage }>{t(error)}</p>}
+      {error && <p className={styles.errorMessage}>{t(error)}</p>}
     </div>
   );
 };
@@ -55,7 +68,7 @@ Textarea.propTypes = {
   disabled: PropTypes.bool,
   className: PropTypes.string,
   error: PropTypes.string,
-  placeholder: PropTypes.string
+  placeholder: PropTypes.string,
 };
 
 export default Textarea;

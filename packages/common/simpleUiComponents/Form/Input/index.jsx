@@ -7,11 +7,10 @@
  * is strictly prohibited.
  */
 import React, { useCallback } from 'react';
-import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
-import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import Icon from 'common/simpleUiComponents/Icon';
-
+import PropTypes from 'prop-types';
 import styles from './Input.module.scss';
 
 const Input = ({
@@ -37,7 +36,7 @@ const Input = ({
   }, []);
 
   const handleChange = useCallback((e) => {
-    const value = e.target.value;
+    const { value } = e.target;
 
     const validatedValue = disableSpace ? value.replace(/ /g, '') : value; // This is for ios swipe type
 
@@ -46,31 +45,34 @@ const Input = ({
 
   return (
     <div
-      className={ classNames(styles.inputParent, {
+      className={classNames(styles.inputParent, {
         [styles.withIcon]: iconName,
-        [styles[`${iconPosition}Icon`]]: iconName
-      }) }
+        [styles[`${iconPosition}Icon`]]: iconName,
+      })}
     >
       {label && (
-        <label className={ classNames('ellipsis-text', styles.label) } htmlFor={ name }>
+        <label
+          className={classNames('ellipsis-text', styles.label)}
+          htmlFor={name}
+        >
           {t(label)}
         </label>
       )}
       <input
         autoComplete="nope"
-        className={ classNames({ [styles.error]: error }) }
-        id={ name }
-        name={ name }
-        onBlur={ onBlur }
-        onChange={ handleChange }
-        onKeyPress={ handleKeyPress }
-        placeholder={ placeholder }
-        type={ type }
-        value={ value }
-        { ...rest }
+        className={classNames({ [styles.error]: error })}
+        id={name}
+        name={name}
+        placeholder={placeholder}
+        type={type}
+        value={value}
+        onBlur={onBlur}
+        onChange={handleChange}
+        onKeyPress={handleKeyPress}
+        {...rest}
       />
-      {iconName && <Icon name={ iconName } />}
-      {error && <p className={ styles.errorMessage }>{t(error)}</p>}
+      {iconName && <Icon name={iconName} />}
+      {error && <p className={styles.errorMessage}>{t(error)}</p>}
     </div>
   );
 };
@@ -88,8 +90,8 @@ Input.propTypes = {
   error: PropTypes.string,
   position: PropTypes.string,
   icon: PropTypes.shape({
-    name: PropTypes.string
-  })
+    name: PropTypes.string,
+  }),
 };
 
 export default Input;

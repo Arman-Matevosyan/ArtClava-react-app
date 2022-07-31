@@ -14,7 +14,7 @@ const ErrorView = () => {
   const { t } = useTranslation();
 
   return (
-    <div className={ styles.wrapper }>
+    <div className={styles.wrapper}>
       <h2>{t('app:error.simple')}</h2>
       <div>{t('app:error.refresh')}</div>
     </div>

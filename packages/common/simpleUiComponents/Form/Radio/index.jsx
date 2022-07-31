@@ -7,12 +7,11 @@
  * is strictly prohibited.
  */
 import React, { useCallback } from 'react';
-import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
-
-import styles from './Radio.module.scss';
 import inputStyles from '../Input/Input.module.scss';
+import styles from './Radio.module.scss';
 
 const Radio = ({ label, name, options, onChange, value, error }) => {
   const { t } = useTranslation();
@@ -20,23 +19,27 @@ const Radio = ({ label, name, options, onChange, value, error }) => {
   const handleChange = (value) => onChange?.(value, name);
 
   return (
-    <div className={ styles.radioParent }>
-      {label && <p className={ classNames('ellipsis-text', inputStyles.label) }>{t(label)}</p>}
-      <div className={ styles.items }>
+    <div className={styles.radioParent}>
+      {label && (
+        <p className={classNames('ellipsis-text', inputStyles.label)}>
+          {t(label)}
+        </p>
+      )}
+      <div className={styles.items}>
         {options.map((option) => {
           const { name: optionName, disabled, value: optionValue } = option;
 
           return (
-            <label className={ styles.radio } key={ optionValue }>
+            <label key={optionValue} className={styles.radio}>
               <span className="text">{t(optionName)}</span>
               <input
-                checked={ optionValue === value }
-                disabled={ disabled }
-                id={ optionValue }
-                key={ optionName }
-                name={ name }
-                onChange={ useCallback(() => handleChange(optionValue), []) }
+                key={optionName}
+                checked={optionValue === value}
+                disabled={disabled}
+                id={optionValue}
+                name={name}
                 type="radio"
+                onChange={useCallback(() => handleChange(optionValue), [])}
               />
               <div className="checkmark">
                 <i className="check" />
@@ -45,7 +48,7 @@ const Radio = ({ label, name, options, onChange, value, error }) => {
           );
         })}
       </div>
-      {error && <p className={ styles.errorMessage }>{t(error)}</p>}
+      {error && <p className={styles.errorMessage}>{t(error)}</p>}
     </div>
   );
 };
@@ -58,7 +61,7 @@ Radio.propTypes = {
   disabled: PropTypes.bool,
   className: PropTypes.string,
   name: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(PropTypes.any).isRequired
+  options: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
 export default Radio;

@@ -7,6 +7,7 @@
  * is strictly prohibited.
  */
 import React from 'react';
+
 const NotFound = () => {
   return <div />;
 };

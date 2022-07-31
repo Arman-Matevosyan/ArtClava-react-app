@@ -1,0 +1,167 @@
+module.exports = {
+  env: {
+    commonjs: true,
+    es6: true,
+  },
+  parser: '@babel/eslint-parser',
+  extends: [
+    'airbnb',
+    'airbnb/hooks',
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:sonarjs/recommended',
+    'plugin:jsx-a11y/recommended',
+    'plugin:prettier/recommended',
+    // 'plugin:jest/recommended',
+  ],
+  plugins: [
+    'prettier',
+    'react-hooks',
+    'import-helpers',
+    'fp',
+    'sonarjs',
+    'react',
+    'jsx-a11y',
+  ],
+  rules: {
+    'max-depth': [2, 2],
+    eqeqeq: [2, 'always'],
+    'max-lines': [2, { max: 200, skipBlankLines: true }],
+    complexity: [2, { max: 10 }],
+    'dot-notation': 2,
+    'no-undef-init': 2,
+    'no-undefined': 2,
+    'max-params': [2, 3],
+    'no-implicit-coercion': [2, { boolean: true, number: true, string: true }],
+    'no-unneeded-ternary': 2,
+    'no-console': 2,
+    'no-use-before-define': [2, { functions: false, classes: true }],
+    'newline-before-return': 2,
+    'newline-after-var': 2,
+    'padding-line-between-statements': [
+      2,
+      {
+        blankLine: 'always',
+        prev: '*',
+        next: ['multiline-const', 'multiline-let'],
+      },
+      {
+        blankLine: 'always',
+        prev: ['multiline-const', 'multiline-let'],
+        next: '*',
+      },
+      {
+        blankLine: 'always',
+        prev: 'multiline-expression',
+        next: '*',
+      },
+    ],
+
+    'react-hooks/rules-of-hooks': 2,
+    'react-hooks/exhaustive-deps': 1,
+
+    'react/display-name': 2,
+    'react/prop-types': 0,
+    'react/boolean-prop-naming': [
+      1,
+      { rule: '^(is|has|can)[A-Z]([A-Za-z0-9]?)+' },
+    ],
+
+    'react/jsx-props-no-spreading': 2,
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'react/jsx-sort-props': [
+      2,
+      {
+        reservedFirst: true,
+        callbacksLast: true,
+        shorthandFirst: true,
+      },
+    ],
+
+    'import/no-unresolved': 0,
+    'import/extensions': 0,
+    'import/prefer-default-export': 0,
+    'import/no-extraneous-dependencies': [2, { devDependencies: true }],
+    'import-helpers/order-imports': [
+      2,
+      {
+        newlinesBetween: 'never', // new line between groups
+        groups: [
+          '/^react/',
+          '/^utils/',
+          'module',
+          '/^cobalt/',
+          '/^components/',
+          '/^context/',
+          '/^hooks/',
+          '/^styles/',
+          '/^__fixtures__/',
+          ['parent', 'sibling', 'index'],
+        ],
+        alphabetize: { order: 'asc', ignoreCase: true },
+      },
+    ],
+
+    'sonarjs/cognitive-complexity': 1,
+
+    'fp/no-arguments': 2,
+    'fp/no-get-set': 2,
+    'fp/no-loops': 1,
+    'fp/no-rest-parameters': 1,
+    'fp/no-this': 1,
+    'fp/no-valueof-field': 2,
+    'fp/no-mutating-assign': 2,
+    'fp/no-mutating-methods': 1,
+    'fp/no-mutation': [1, { exceptions: [{ object: 'errors' }] }],
+    // '@typescript-eslint/explicit-member-accessibility': 0,
+    // '@typescript-eslint/explicit-function-return-type': 0,
+    // '@typescript-eslint/naming-convention': 2,
+    // '@typescript-eslint/no-empty-function': 0,
+    // '@typescript-eslint/no-unused-vars': [
+    //   'error',
+    //   {
+    //     vars: 'all',
+    //     args: 'after-used',
+    //     ignoreRestSiblings: false,
+    //   },
+    // ],
+    'no-restricted-imports': [
+      2,
+      {
+        patterns: ['..*'],
+      },
+    ],
+  },
+  overrides: [
+    {
+      files: ['src/**/__tests__/*', 'src/**/__fixtures__/*', '*.test.*'],
+      rules: {
+        // 'jest/prefer-spy-on': 1,
+        // 'jest/require-top-level-describe': 2,
+        // 'jest/no-hooks': 2,
+        // 'jest/prefer-strict-equal': 2,
+        // 'jest/prefer-to-have-length': 2,
+        // 'jest/no-disabled-tests': 1,
+        // 'jest/no-test-prefixes': 1,
+        // 'jest/no-mocks-import': 0,
+        // 'jest/no-conditional-expect': 1,
+        'react/display-name': 0,
+        'react/jsx-props-no-spreading': 0,
+        'sonarjs/no-identical-functions': 1,
+        'sonarjs/no-duplicate-string': 1,
+        'fp/no-this': 0,
+        'fp/no-mutation': 0,
+        'fp/no-mutating-methods': 0,
+        // '@typescript-eslint/no-empty-function': 2,
+        'max-lines': 0,
+      },
+    },
+  ],
+  settings: {
+    react: {
+      pragma: 'React',
+      version: 'detect',
+    },
+  },
+  // parser: '@typescript-eslint/parser',
+};

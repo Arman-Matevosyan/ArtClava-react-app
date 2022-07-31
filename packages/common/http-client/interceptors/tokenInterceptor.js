@@ -18,8 +18,8 @@ async function tokenInterceptor(config) {
         baseURL: apiGatewayUrl,
         headers: {
           ...config.headers,
-          Authorization: `Bearer ${accessToken}`
-        }
+          Authorization: `Bearer ${accessToken}`,
+        },
       };
     }
 

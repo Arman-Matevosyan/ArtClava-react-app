@@ -7,10 +7,10 @@
  * is strictly prohibited.
  */
 import React from 'react';
-import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
-import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import Icon from 'common/simpleUiComponents/Icon';
+import PropTypes from 'prop-types';
 import styles from './Button.module.scss';
 
 const Button = ({
@@ -23,21 +23,28 @@ const Button = ({
   position = 'center',
   ...rest
 }) => {
-  return <div className={ classNames(styles.buttonBlock, styles[`${position}Position`]) }>
-    <div className={ classNames(styles.buttonParent, {
-      disabled: disabled,
-      [styles.loading]: isLoading
-    }) }
+  return (
+    <div
+      className={classNames(styles.buttonBlock, styles[`${position}Position`])}
     >
-      {isLoading && <Icon className={ styles.loader } name="loader" />}
-      <button
-        disabled={ disabled || isLoading } onClick={ onClick } type={ type }
-        { ...rest }
+      <div
+        className={classNames(styles.buttonParent, {
+          disabled,
+          [styles.loading]: isLoading,
+        })}
       >
-        {text}
-      </button>
+        {isLoading && <Icon className={styles.loader} name="loader" />}
+        <button
+          disabled={disabled || isLoading}
+          type={type}
+          onClick={onClick}
+          {...rest}
+        >
+          {text}
+        </button>
+      </div>
     </div>
-  </div>;
+  );
 };
 
 Button.propTypes = {
@@ -48,7 +55,7 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   type: PropTypes.string,
   isLoading: PropTypes.bool,
-  position: PropTypes.string
+  position: PropTypes.string,
 };
 
 export default Button;

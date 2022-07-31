@@ -12,8 +12,8 @@ export default (Component) => (props) => {
   const LazyComponent = lazy(Component);
 
   return (
-    <Suspense fallback={ <div /> }>
-      <LazyComponent { ...props } />
+    <Suspense fallback={<div />}>
+      <LazyComponent {...props} />
     </Suspense>
   );
 };

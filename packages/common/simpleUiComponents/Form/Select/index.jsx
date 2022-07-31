@@ -7,13 +7,12 @@
  * is strictly prohibited.
  */
 import React, { useCallback } from 'react';
-import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
-import PropTypes from 'prop-types';
-import Icon from 'common/simpleUiComponents/Icon';
-
-import styles from './Select.module.scss';
+import classNames from 'classnames';
 import inputStyles from 'common/simpleUiComponents/Form/Input/Input.module.scss';
+import Icon from 'common/simpleUiComponents/Icon';
+import PropTypes from 'prop-types';
+import styles from './Select.module.scss';
 
 const Select = ({
   name,
@@ -37,24 +36,31 @@ const Select = ({
 
   return (
     <div
-      className={ classNames(inputStyles.inputParent, styles.selectStyles, {
-        [styles.withIcon]: icon
-      }) }
+      className={classNames(inputStyles.inputParent, styles.selectStyles, {
+        [styles.withIcon]: icon,
+      })}
     >
       <Icon className="arrow" name="arrow-down" />
-      {label && <label className={ classNames('ellipsis-text', inputStyles.label) }>{t(label)}</label>}
+      {label && (
+        <label className={classNames('ellipsis-text', inputStyles.label)}>
+          {t(label)}
+        </label>
+      )}
       <select
-        disabled={ disabled } name={ name } onChange={ handleChange }
-        value={ value } { ...rest }
+        disabled={disabled}
+        name={name}
+        value={value}
+        onChange={handleChange}
+        {...rest}
       >
         {options.map(({ name, [optionSelectValueKey]: value, label }) => (
-          <option key={ `${name}${value}` } value={ value }>
+          <option key={`${name}${value}`} value={value}>
             {t(label || name)}
           </option>
         ))}
       </select>
-      {icon && <Icon className="customIcon" name={ icon } />}
-      {error && <p className={ inputStyles.errorMessage }>{t(error)}</p>}
+      {icon && <Icon className="customIcon" name={icon} />}
+      {error && <p className={inputStyles.errorMessage}>{t(error)}</p>}
     </div>
   );
 };
@@ -68,7 +74,7 @@ Select.propTypes = {
   name: PropTypes.string.isRequired,
   optionSelectValueKey: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.any).isRequired,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default Select;

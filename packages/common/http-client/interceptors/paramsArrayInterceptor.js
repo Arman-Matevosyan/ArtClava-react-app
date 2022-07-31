@@ -41,6 +41,6 @@ export default (config) => {
 
   return {
     ...config,
-    url: `${params[0]}?${stringify(parsed, { arrayFormat: 'repeat' })}`
+    url: `${params[0]}?${stringify(parsed, { arrayFormat: 'repeat' })}`,
   };
 };

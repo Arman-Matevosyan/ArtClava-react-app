@@ -17,26 +17,23 @@ export default Context;
 const axiosInstance = getAxiosInstance();
 
 const getFactory = (baseUrl) => ({
-  people: PeopleEndpoint(baseUrl, 'people1')
+  people: PeopleEndpoint(baseUrl, 'people1'),
 });
-
 
 // eslint-disable-next-line react/prop-types
 export const HttpClientProvider = ({ baseUrl, children }) => {
   const [currentBaseUrl, setBaseUrl] = useState(baseUrl);
 
-  const [config, setConfig] = useState(() =>
-  getFactory(baseUrl)
-  );
-  
+  const [config, setConfig] = useState(() => getFactory(baseUrl));
+
   useEffect(() => {
     if (baseUrl === currentBaseUrl) {
       return;
     }
-    
+
     setBaseUrl(baseUrl);
     setConfig(getFactory(baseUrl));
   }, [baseUrl, currentBaseUrl]);
-  
-  return <Context.Provider value={ config }>{children}</Context.Provider>;
+
+  return <Context.Provider value={config}>{children}</Context.Provider>;
 };

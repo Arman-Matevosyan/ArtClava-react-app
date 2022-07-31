@@ -10,17 +10,22 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const PrivateRoute = ({ component: Component, hasAccess = false, exact = false, path = '' }) => {
+const PrivateRoute = ({
+  component: Component,
+  hasAccess = false,
+  exact = false,
+  path = '',
+}) => {
   const target = hasAccess ? Component : Unauthorized;
 
-  return <Route component={ target } exact={ exact } path={ path } />;
+  return <Route component={target} exact={exact} path={path} />;
 };
 
 PrivateRoute.propTypes = {
   component: PropTypes.node,
   hasAccess: PropTypes.bool,
   exact: PropTypes.bool,
-  path: PropTypes.string
+  path: PropTypes.string,
 };
 
 export default PrivateRoute;

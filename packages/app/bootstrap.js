@@ -7,16 +7,16 @@
  * is strictly prohibited.
  */
 import React from 'react';
-import {render} from 'react-dom';
+import { render } from 'react-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { Router } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
+import AppEntryPoint from 'app/app-structure/AppEntryPoint';
 import ErrorBoundary from 'app/app-structure/ErrorBoundary';
 import processEnv from 'app/utils/processEnv';
-import AppEntryPoint from 'app/app-structure/AppEntryPoint';
 import { initializeI18n } from 'common';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { HttpClientProvider } from 'common/http-client/HttpClientContext';
+import { createBrowserHistory } from 'history';
 import PropTypes from 'prop-types';
-import { HttpClientProvider } from '../common/http-client/HttpClientContext';
 
 const history = createBrowserHistory();
 
@@ -28,18 +28,17 @@ const queryClient = new QueryClient({
       retry: (failureCount, error = { response: { status } }) =>
         failureCount < 4 && error?.response?.status === 429,
       cacheTime: 0,
-      retryDelay: 2000
-    }
-  }
+      retryDelay: 2000,
+    },
+  },
 });
 
 const AppEntryPointWrapper = ({ apiGatewayUrl }) => {
-
   return (
     <ErrorBoundary>
-      <HttpClientProvider baseUrl={ apiGatewayUrl }>
-        <QueryClientProvider client={ queryClient }>
-          <Router history={ history }>
+      <HttpClientProvider baseUrl={apiGatewayUrl}>
+        <QueryClientProvider client={queryClient}>
+          <Router history={history}>
             <AppEntryPoint />
           </Router>
         </QueryClientProvider>
@@ -49,8 +48,9 @@ const AppEntryPointWrapper = ({ apiGatewayUrl }) => {
 };
 
 AppEntryPointWrapper.propTypes = {
-  apiGatewayUrl: PropTypes.string
+  apiGatewayUrl: PropTypes.string,
 };
+
 async function init() {
   history.listen();
   // language init
@@ -63,18 +63,17 @@ async function init() {
   await initializeI18n({ language, resourcesTemplateUrl });
   // baseURL here
   const apiGatewayUrl = 'https://swapi.dev/api/';
-  
-  render (
-    <AppEntryPointWrapper apiGatewayUrl={ apiGatewayUrl }  />,
-      document.getElementById('root')
+
+  render(
+    <AppEntryPointWrapper apiGatewayUrl={apiGatewayUrl} />,
+    document.getElementById('root')
   );
 }
-  // Language settings
-  // Integration with react-router-dom
+// Language settings
+// Integration with react-router-dom
 
-  if (processEnv.NODE_ENV === 'development') {
-    const useMocks = false;
-
-  }
+if (processEnv.NODE_ENV === 'development') {
+  const useMocks = false;
+}
 
 init();

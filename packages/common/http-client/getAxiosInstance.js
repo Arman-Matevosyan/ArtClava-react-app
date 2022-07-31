@@ -8,14 +8,14 @@
  */
 import axios from 'axios';
 import applyConverters from 'axios-case-converter';
-import parseJSON from './interceptors/parseJson';
 import createHttpErrorsInterceptor from './interceptors/httpErrorsInterceptor';
-import tokenInterceptor from './interceptors/tokenInterceptor';
 import paramsArrayInterceptor from './interceptors/paramsArrayInterceptor';
+import parseJSON from './interceptors/parseJson';
+import tokenInterceptor from './interceptors/tokenInterceptor';
 
 export default () => {
   const axiosInstance = axios.create({
-    timeout: 10000
+    timeout: 10000,
   });
 
   axiosInstance.interceptors.request.use(tokenInterceptor);

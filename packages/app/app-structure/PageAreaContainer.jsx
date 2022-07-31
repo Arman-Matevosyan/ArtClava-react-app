@@ -11,8 +11,8 @@ import { Route, Switch } from 'react-router-dom';
 import NotFound from 'app/components/NotFound/NotFound';
 import routes from 'app/utils/routes';
 import Home from 'pages/home';
-import Header from 'sections/Header';
 import Footer from 'sections/Footer';
+import Header from 'sections/Header';
 
 import 'common/assets/style.scss';
 
@@ -24,8 +24,8 @@ const PageAreaContainer = () => (
     <main>
       <Switch>
         {/* <Redirect from={routes.home} to={routes.home.toString()} exact /> */}
-        <Route component={ Home } exact path={ routes.home } />
-        <Route component={ NotFound } />
+        <Route exact component={Home} path={routes.home} />
+        <Route component={NotFound} />
       </Switch>
     </main>
     <Footer />

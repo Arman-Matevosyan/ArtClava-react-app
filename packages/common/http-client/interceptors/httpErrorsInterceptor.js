@@ -10,49 +10,48 @@ import i18n from '../../utils/i18n';
 import tokenInterceptor from './tokenInterceptor';
 
 export const showUserActionDanger = (message, title) => {
+  // Trigger generic error
+  const getFieldName = ({ name }) => name.substring(name.lastIndexOf('.') + 1);
 
-// Trigger generic error
-const getFieldName = ({ name }) => name.substring(name.lastIndexOf('.') + 1);
+  const showError = (
+    data = {
+      message,
+      code,
+      fields: { name, description },
+    }
+  ) => {
+    if (typeof data === 'string') {
+      showUserActionDanger(data || i18n.t('app:error.generic'));
 
-const showError = (
-  data = {
-        message: message,
-        code: code,
-        fields: { name: name, description: description }
-      }
-) => {
-  if (typeof data === 'string') {
-    showUserActionDanger(data || i18n.t('app:error.generic'));
+      return;
+    }
 
-    return;
-  }
+    const { message, fields, code } = data;
 
-  const { message, fields, code } = data;
+    let errorTitle = null;
 
-  let errorTitle = null;
+    let errorMessage = message;
 
-  let errorMessage = message;
+    if (
+      code !== undefined &&
+      !Number.isNaN(code) &&
+      i18n.exists(`errors.codes.${code}`)
+    ) {
+      // Provide i18n for the returned error code
+      errorMessage = i18n.t(`app:error.codes.${code}`);
+    } else if (fields && fields.length) {
+      errorTitle = message;
+      errorMessage = fields.reduce(
+        (acc, field, index, arr) =>
+          `${acc}${getFieldName(field)} ${field.description}${
+            index < arr.length - 1 ? ' | ' : ''
+          }`,
+        ''
+      );
+    }
 
-  if (
-    code !== undefined &&
-    !Number.isNaN(code) &&
-    i18n.exists(`errors.codes.${code}`)
-  ) {
-    // Provide i18n for the returned error code
-    errorMessage = i18n.t(`app:error.codes.${code}`);
-  } else if (fields && fields.length) {
-    errorTitle = message;
-    errorMessage = fields.reduce(
-      (acc, field, index, arr) =>
-        `${acc}${getFieldName(field)} ${field.description}${
-          index < arr.length - 1 ? ' | ' : ''
-        }`,
-      ''
-    );
-  }
-
-  showUserActionDanger(errorMessage, errorTitle);
-};
+    showUserActionDanger(errorMessage, errorTitle);
+  };
 };
 
 const showDefaultError = () =>
@@ -86,7 +85,7 @@ function createHttpErrorsInterceptor(axios) {
         if (newTokenConfig) {
           originalRequest = {
             ...originalRequest,
-            ...newTokenConfig
+            ...newTokenConfig,
           };
         }
 
