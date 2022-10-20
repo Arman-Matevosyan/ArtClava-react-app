@@ -16,22 +16,24 @@ import axios from 'axios';
 const peopleFetch = async (people) => {
   const res = await axios.get(people);
 
-
   return res.data;
 };
 
 const Header = () => {
   const { people } = useHttpClient();
 
-  const { data, status, isError, isLoading, isFetched } = useQuery('people', () => peopleFetch(people));
+  const { data, status, isError, isLoading, isFetched } = useQuery(
+    'people',
+    () => peopleFetch(people)
+  );
 
   console.log(data, status, isError, isLoading, isFetched, '====');
 
   return (
-    <header className={ styles.parent }>
-      <div className={ styles.content }>
-        <span className={ styles.logo }>Logo</span>
-        <div className={ styles.navigation } />
+    <header className={styles.parent}>
+      <div className={styles.content}>
+        <span className={styles.logo}>Logo</span>
+        <div className={styles.navigation} />
       </div>
     </header>
   );

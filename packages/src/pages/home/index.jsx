@@ -8,13 +8,21 @@
  */
 import React, { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button, Checkbox, Column, Input, Radio, Select, Textarea } from 'common/simpleUiComponents/Form';
+import {
+  Button,
+  Checkbox,
+  Column,
+  Input,
+  Radio,
+  Select,
+  Textarea,
+} from 'common/simpleUiComponents/Form';
 
 const radioOptions = [
   { name: 'Without delivery', value: 1 },
   { name: 'Paid by company', value: 2 },
   { name: 'Paid by sender', value: 3 },
-  { name: 'Paid by receiver', value: 4 }
+  { name: 'Paid by receiver', value: 4 },
 ];
 
 const Home = () => {
@@ -37,35 +45,45 @@ const Home = () => {
       <form>
         <Column>
           <Input label="input label" name="tst1" value="kkk" />
-          <Input
-            disabled label="input label" name="tst1"
-            value="disabled"
-          />
-          <Input
-            label="input label" name="tst1" readOnly
-            value="readonly"
-          />
+          <Input disabled label="input label" name="tst1" value="disabled" />
+          <Input label="input label" name="tst1" readOnly value="readonly" />
         </Column>
         <Input
-          error="Error message" label="input label" name="tst2"
+          error="Error message"
+          label="input label"
+          name="tst2"
           value="kkk"
         />
-        <Input icon={ { name: 'search' } } name="tst3" placeholder="Search" />
-        <Input icon={ { name: 'instagram', position: 'right' } } name="tst4" placeholder="Search" />
-        <Select
-          icon="instagram" label="Select with icon" name="select"
-          options={ radioOptions }
+        <Input icon={{ name: 'search' }} name="tst3" placeholder="Search" />
+        <Input
+          icon={{ name: 'instagram', position: 'right' }}
+          name="tst4"
+          placeholder="Search"
         />
-        <Select name="select2" options={ radioOptions } />
+        <Select
+          icon="instagram"
+          label="Select with icon"
+          name="select"
+          options={radioOptions}
+        />
+        <Select name="select2" options={radioOptions} />
         <Textarea label="Textarea" name="tst5" placeholder="Multiline text" />
         <Radio
-          label="Radio list" name="radio" options={ radioOptions }
-          value={ 4 }
+          label="Radio list"
+          name="radio"
+          options={radioOptions}
+          value={4}
         />
-        <Checkbox label="Checkbox list" name="checkbox" text="Checkbox example" />
+        <Checkbox
+          label="Checkbox list"
+          name="checkbox"
+          text="Checkbox example"
+        />
         <Button position="center" text="button text" />
         <Button
-          isLoading={ loading } onClick={ handleClick } position="center"
+          isLoading={loading}
+          onClick={handleClick}
+          position="center"
           text="button with loading, please click"
         />
       </form>

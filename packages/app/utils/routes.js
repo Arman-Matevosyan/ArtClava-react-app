@@ -7,7 +7,7 @@
  * is strictly prohibited.
  */
 const routes = {
-    home: '/'
-  };
-  
+  home: '/',
+};
+
 export default routes;

@@ -11,8 +11,8 @@ import React from 'react';
 import styles from './Footer.module.scss';
 
 const Footer = () => (
-  <footer className={ styles.parent }>
-    <div className={ styles.content }>footer</div>
+  <footer className={styles.parent}>
+    <div className={styles.content}>footer</div>
   </footer>
 );
 
